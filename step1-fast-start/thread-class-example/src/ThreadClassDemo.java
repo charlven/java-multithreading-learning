@@ -1,6 +1,6 @@
 public class ThreadClassDemo {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         Runnable hello = new DisplayMessage("Hello");
         Thread thread1 = new Thread(hello);
         thread1.setDaemon(true);
@@ -20,7 +20,7 @@ public class ThreadClassDemo {
         thread3.start();
         try {
             thread3.join();
-        }catch(InterruptedException e) {
+        } catch (InterruptedException e) {
             System.out.println("Thread interrupted.");
         }
         System.out.println("Starting thread4...");

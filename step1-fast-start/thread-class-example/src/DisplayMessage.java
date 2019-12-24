@@ -6,7 +6,7 @@ public class DisplayMessage implements Runnable {
     }
 
     public void run() {
-        while(true) {
+        while (true) {
             System.out.println(message);
         }
     }

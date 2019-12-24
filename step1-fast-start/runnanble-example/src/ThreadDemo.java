@@ -1,23 +1,29 @@
-public class RunnableDemo implements Runnable {
+/**
+ * 集成 Thread 类本身(Thread 提供了一些方法)
+ *
+ * @overwrite run();
+ */
+class ThreadDemo extends Thread {
     private Thread t;
     private String threadName;
 
-    public RunnableDemo(String name) {
+    private ThreadDemo(String name) {
         threadName = name;
-        System.out.println("Creating " + name);
+        System.out.println("Creating " + threadName);
     }
 
-    @Override
     public void run() {
         System.out.println("Running " + threadName);
         try {
-            for (int i = 5; i > 0; i--) {
+            for (int i = 4; i > 0; i--) {
                 System.out.println("Thread: " + threadName + ", " + i);
+                // 让线程睡眠一会
                 Thread.sleep(50);
             }
         } catch (InterruptedException e) {
             System.out.println("Thread " + threadName + " interrupted.");
         }
+        System.out.println("Thread " + threadName + " exiting.");
     }
 
     public void start() {
@@ -29,11 +35,12 @@ public class RunnableDemo implements Runnable {
     }
 
     public static void main(String[] args) {
-        RunnableDemo r1 = new RunnableDemo("线程1");
-        r1.start();
+        ThreadDemo t1 = new ThreadDemo("Thread-1");
+        t1.start();
 
-        RunnableDemo r2 = new RunnableDemo("线程2");
-        r2.start();
+        ThreadDemo t2 = new ThreadDemo("Thread-2");
+        t2.start();
     }
 }
+
 
